@@ -1,16 +1,16 @@
-import './loginWindow.css';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import { useEffect, useState } from 'react';
-import { createUser, loginUser } from '../../services/userAPIcalls';
+import "./loginWindow.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import { useContext, useEffect, useState } from "react";
+import { createUser, loginUser } from "../../api/userAPI";
 import { CircularProgress } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../../contexts/auth.context";
-import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { toast } from "react-hot-toast";
 
 export default function () {
-  const { logIn } = useAuth();
+  const { setIsLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [login, setLogin] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -21,49 +21,59 @@ export default function () {
   const [userAddedErrorPrompt, setUserAddedErrorPrompt] = useState("");
 
   const handleSubmit = async (event) => {
-    setLoading(true);
     event.preventDefault();
+    setLoading(true);
 
     const data = new FormData(event.currentTarget);
 
-    if (login) {
-      const userData = await loginUser(
-        data.get("username"),
-        data.get("password")
-      );
-      if (userData.user) {
-        console.log("logged in");
-        logIn();
-        return navigate("/");
-      } else {
-        setUserLoginErrorPrompt(userData.message);
-        setLoading(false);
-        return setPrompt(true);
-      }
-    } else {
-      const userData = await createUser(
-        data.get("username"),
-        data.get("password")
-      );
-      if (userData.username) {
-        // Automatically log the user in after successful registration
-        const loginData = await loginUser(
+    try {
+      if (login) {
+        const userData = await loginUser(
           data.get("username"),
-          data.get("password")
+          data.get("password"),
         );
-        if (loginData.user) {
-          console.log("signed up and logged in");
-          logIn();
-          return navigate("/");
+
+        if (userData.user) {
+          toast.success("Welcome Back 👋");
+          setIsLoggedIn(true);
+          // reloadInventory();
+          // navigate("/copilot/");
         } else {
-          setUserLoginErrorPrompt(loginData.message);
+          setUserLoginErrorPrompt(userData.message);
+          toast.error(userData.message);
+          setLoading(false);
+          setPrompt(true);
         }
       } else {
-        console.log(userData);
-        setUserAddedErrorPrompt(userData.message);
+        const userData = await createUser(
+          data.get("username"),
+          data.get("password"),
+        );
+
+        if (userData.username) {
+          const loginData = await loginUser(
+            data.get("username"),
+            data.get("password"),
+          );
+
+          if (loginData.user) {
+            toast.success("Signed up and logged in successfully!");
+            setIsLoggedIn(true);
+          } else {
+            setUserLoginErrorPrompt(loginData.message);
+            toast.error(loginData.message);
+          }
+        } else {
+          setUserAddedErrorPrompt(userData.message);
+          toast.error(userData.message);
+        }
+        setLoading(false);
+        setPrompt(true);
       }
+    } catch (error) {
+      toast.error("An unexpected error occurred.");
       setLoading(false);
-      return setPrompt(true);
+      setPrompt(true);
     }
   };
 
@@ -89,7 +99,7 @@ export default function () {
     const randomGuest = getRandomGuest();
     const userData = await loginUser(
       randomGuest.username,
-      randomGuest.password
+      randomGuest.password,
     );
 
     if (userData.user) {

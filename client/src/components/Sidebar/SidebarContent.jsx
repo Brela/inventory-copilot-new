@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -11,19 +11,26 @@ import {
   faRightFromBracket,
   faUser,
   faTimes,
-} from '@fortawesome/free-solid-svg-icons';
-import './sidebar.css';
-import './SearchInput.css';
-import SearchInput from './SearchInput';
-import { logoutUser } from '../../services/userAPIcalls';
-import { useAuth } from "../../contexts/auth.context";
-import { useNavigate } from 'react-router-dom';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import Swal from 'sweetalert2';
+} from "@fortawesome/free-solid-svg-icons";
+import "./sidebar.css";
+import "./SearchInput.css";
+import SearchInput from "./SearchInput";
+import { logoutUser } from "../../api/userAPI";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 const SidebarContent = ({ onToggle, collapsed }) => {
-    const { logOut } = useAuth();
+  const {
+    isLoggedIn,
+    setIsLoggedIn,
+    authLoading,
+    fetchAuthStatus,
+    user,
+    setUser,
+  } = useContext(AuthContext);
   const [username, setUsername] = useState(null);
   const navigate = useNavigate();
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(true);
@@ -33,7 +40,7 @@ const SidebarContent = ({ onToggle, collapsed }) => {
     onSuccess: async (data) => {
       if (data !== "JsonWebTokenError" && data !== "TokenExpiredError") {
         setUsername(data.username);
-        setCompanyName(await getCompany(data.companyID));
+
         if (!data.id) {
           setUserIsLoggedIn(false);
         }
@@ -64,7 +71,8 @@ const SidebarContent = ({ onToggle, collapsed }) => {
 
     if (confirmLogout.isConfirmed) {
       await logoutUser();
-      logOut();
+      setIsLoggedIn(false);
+      setUser(null);
       navigate("/login");
     }
   };
@@ -75,7 +83,7 @@ const SidebarContent = ({ onToggle, collapsed }) => {
       return Swal.fire({
         icon: "info",
         title: "Settings",
-        html: userSettingsBlock,
+        // html: userSettingsBlock,
         background: "#19191a",
         color: "#fff",
         confirmButtonColor: "#2952e3",

@@ -1,27 +1,30 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { InventoryContext } from '../../contexts/inventory.context';
-import { OrdersContext } from '../../contexts/orders.context'
-import { getSettings } from '../../services/settingsAPIcalls'
-import { updateSetting } from '../../services/settingsAPIcalls'
+import React, { useEffect, useState, useContext } from "react";
+import { InventoryContext } from "../../contexts/inventory.context";
+import { OrdersContext } from "../../contexts/orders.context";
+import { getSettings } from "../../api/settingsAPI";
+import { updateSetting } from "../../api/settingsAPI";
 
 function FilterBy() {
   const [settings, setSettings] = useState();
-  const { userSettings, reloadInventory, userData } = useContext(InventoryContext);
+  const { userSettings, reloadInventory, userData } =
+    useContext(InventoryContext);
   const { reloadOrders } = useContext(OrdersContext);
-  const [selectedOption, setSelectedOption] = useState('');
-
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleFilterChange = async (event) => {
     const twoValues = event.target.value;
     setSelectedOption(twoValues);
     let newFilterBy, newSortOrder;
-    newFilterBy = twoValues.split('_')[0];
-    newSortOrder = twoValues.split('_')[1];
+    newFilterBy = twoValues.split("_")[0];
+    newSortOrder = twoValues.split("_")[1];
     const filterBy = newFilterBy;
     const sortOrder = newSortOrder;
 
     if (userData) {
-      let updated = await updateSetting(userData.username, { filterBy, sortOrder });
+      let updated = await updateSetting(userData.username, {
+        filterBy,
+        sortOrder,
+      });
       // trigger rerender of handleGetSettings because settings state is a dependancy
       setSettings(updated);
 
@@ -29,11 +32,10 @@ function FilterBy() {
       reloadInventory(null, updatedUserData);
       reloadOrders();
     }
-
   };
   useEffect(() => {
-    reloadInventory()
-  }, [userSettings])
+    reloadInventory();
+  }, [userSettings]);
 
   useEffect(() => {
     const handleGetSettings = async () => {
@@ -41,16 +43,18 @@ function FilterBy() {
         const settingsData = await getSettings(userData.username);
         setSettings(settingsData);
         if (settingsData.filterBy && settingsData.sortOrder) {
-          setSelectedOption(`${settingsData.filterBy}_${settingsData.sortOrder}`);
+          setSelectedOption(
+            `${settingsData.filterBy}_${settingsData.sortOrder}`,
+          );
         }
       }
     };
     handleGetSettings();
   }, [userData]);
 
-
   return (
-    <select id='filterBy'
+    <select
+      id="filterBy"
       onChange={handleFilterChange}
       defaultValue={selectedOption}
       key={selectedOption}

@@ -1,17 +1,15 @@
-import { createContext, useState, useEffect } from 'react';
-import { updateSetting } from '../services/settingsAPIcalls';
-import { updateUser } from '../services/userAPIcalls';
+import { createContext, useState, useEffect } from "react";
+import { updateSetting } from "../api/settingsAPI";
 
 export const PinningContext = createContext({
   pinnedItems: [],
-  pinItem: () => { },
-  unpinItem: () => { },
-  isPinned: () => { },
+  pinItem: () => {},
+  unpinItem: () => {},
+  isPinned: () => {},
 });
 
 export const PinningProvider = ({ children, userData, userSettings }) => {
   const [pinnedItems, setPinnedItems] = useState(userSettings?.pinned || []);
-
 
   useEffect(() => {
     // Load pinned items from the user's settings when the component mounts
@@ -23,7 +21,6 @@ export const PinningProvider = ({ children, userData, userSettings }) => {
 
   const pinItem = async (itemId) => {
     try {
-
       const updatedPinnedItems = [...pinnedItems, itemId];
       // const updatedSettings = { ...userData.settings, pinned: updatedPinnedItems };
       const updatedSettings = { pinned: updatedPinnedItems };
@@ -34,7 +31,6 @@ export const PinningProvider = ({ children, userData, userSettings }) => {
       console.error(error);
     }
   };
-
 
   const unpinItem = async (itemId) => {
     try {
@@ -47,8 +43,6 @@ export const PinningProvider = ({ children, userData, userSettings }) => {
       console.error(error);
     }
   };
-
-
 
   const isPinned = (itemId) => {
     return pinnedItems.includes(itemId);

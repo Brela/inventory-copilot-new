@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import Swal from 'sweetalert2';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 function ProfileContent() {
   const navigate = useNavigate();

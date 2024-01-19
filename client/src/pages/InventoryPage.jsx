@@ -1,14 +1,14 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
-import { useQuery } from 'react-query';
-import InventoryContent from '../components/Inventory/Inventory.jsx';
-import OrdersPreview from '../components/Orders/OrdersPreview';
-import { authenticateUser } from "../services/authenticationAPIcalls.js";
-import SalesGraph from '../components/SalesChart.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartColumn } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useQuery } from "react-query";
+import InventoryContent from "../components/Inventory/Inventory.jsx";
+import OrdersPreview from "../components/Orders/OrdersPreview";
+import { authenticateUser } from "../api/authenticationAPI.js";
+import SalesGraph from "../components/SalesChart.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChartColumn } from "@fortawesome/free-solid-svg-icons";
 
-import './invOrdContainer.css';
-import { InventoryProvider } from '../contexts/inventory.context.jsx';
+import "./invOrdContainer.css";
+import { InventoryProvider } from "../contexts/inventory.context.jsx";
 
 function InventoryPage() {
   const [username, setUsername] = useState(null);
@@ -22,10 +22,10 @@ function InventoryPage() {
   useLayoutEffect(() => {
     const updateContainerHeight = () => {
       const salesGraphContainer = document.querySelector(
-        ".sales-graph-container"
+        ".sales-graph-container",
       );
       const inventoryOrdersContainer = document.querySelector(
-        ".inventory-orders-container"
+        ".inventory-orders-container",
       );
 
       if (chartVisible) {

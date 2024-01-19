@@ -1,26 +1,36 @@
-import React, { useContext, useEffect, useState, useRef, useLayoutEffect } from 'react';
-import { findDOMNode } from 'react-dom';
-import { useNavigate } from 'react-router-dom';
-import './orders.css';
-import { InventoryContext } from '../../contexts/inventory.context';
-import { OrdersContext } from '../../contexts/orders.context';
-import { PinningContext } from '../../contexts/pinning.context';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { updateOrderItem } from '../../services/ordersAPIcalls';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from "react";
+import { findDOMNode } from "react-dom";
+import { useNavigate } from "react-router-dom";
+import "./orders.css";
+import { InventoryContext } from "../../contexts/inventory.context";
+import { OrdersContext } from "../../contexts/orders.context";
+import { PinningContext } from "../../contexts/pinning.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { updateOrderItem } from "../../api/ordersAPI";
 import {
   handleOrderDelivery,
   orderEnRouteTimer,
   pauseAllTimeouts,
-} from '../../utils/orderHelpers';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import EditPopup from './EditPopup';
+} from "../../utils/orderHelpers";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import EditPopup from "./EditPopup";
 
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-function OrdersPreview({ inventoryListScrollRef, ordersListScrollRef, setRowHeightState }) {
+function OrdersPreview({
+  inventoryListScrollRef,
+  ordersListScrollRef,
+  setRowHeightState,
+}) {
   const navigate = useNavigate();
   /*   const { data, isLoading, isError } = useQuery(
     'authenticateUser',
@@ -77,7 +87,7 @@ function OrdersPreview({ inventoryListScrollRef, ordersListScrollRef, setRowHeig
   // --------------- highlight orders based on selectedItems -----------------
   const findProductIndexInSelectedItems = (productId) => {
     return selectedItems.findIndex(
-      (selectedItemId) => selectedItemId === productId
+      (selectedItemId) => selectedItemId === productId,
     );
   };
 
@@ -113,7 +123,7 @@ function OrdersPreview({ inventoryListScrollRef, ordersListScrollRef, setRowHeig
   useLayoutEffect(() => {
     if (activeOrders) {
       const trElement = findDOMNode(
-        document.querySelector('[data-row-height-ref="true"]')
+        document.querySelector('[data-row-height-ref="true"]'),
       );
       if (trElement) {
         setRowHeightState(trElement.offsetHeight);
@@ -137,7 +147,7 @@ function OrdersPreview({ inventoryListScrollRef, ordersListScrollRef, setRowHeig
             null,
             setTempInStock,
             setDisplayOrderedDeliveredPopup,
-            setOrderedDeliveryPopupContent
+            setOrderedDeliveryPopupContent,
           );
         }
         // if the timeout was paused (then it has a value in "timeouts" useRef), call the orderEnRouteTimer function with the remaining time argument
@@ -157,7 +167,7 @@ function OrdersPreview({ inventoryListScrollRef, ordersListScrollRef, setRowHeig
             remainingTime,
             setTempInStock,
             setDisplayOrderedDeliveredPopup,
-            setOrderedDeliveryPopupContent
+            setOrderedDeliveryPopupContent,
           ); // Start a new timeout with the remaining time
         }
       });

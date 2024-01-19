@@ -1,20 +1,20 @@
 import { createContext, useState, useEffect } from "react";
-import { useQuery } from 'react-query';
-import { getOrdersList } from "../services/ordersAPIcalls";
-import { authenticateUser } from '../services/authenticationAPIcalls';
+import { useQuery } from "react-query";
+import { getOrdersList } from "../api/ordersAPI";
+import { authenticateUser } from "../api/authenticationAPI";
 
 export const OrdersContext = createContext({
-    orders: [],
-    activeOrders: [],
-    reloadOrders: () => { },
-    deliveriesOn: false,
-    useSelectedOnlyOn: false,
-    displayOrderedDeliveredPopup: false,
-    setDisplayOrderedDeliveredPopup: () => { },
-    setDeliveriesOn: () => { },
-    setUseSelectedOnlyOn: () => { },
-    orderedDeliveryPopupContent: [],
-    setOrderedDeliveryPopupContent: [],
+  orders: [],
+  activeOrders: [],
+  reloadOrders: () => {},
+  deliveriesOn: false,
+  useSelectedOnlyOn: false,
+  displayOrderedDeliveredPopup: false,
+  setDisplayOrderedDeliveredPopup: () => {},
+  setDeliveriesOn: () => {},
+  setUseSelectedOnlyOn: () => {},
+  orderedDeliveryPopupContent: [],
+  setOrderedDeliveryPopupContent: [],
 });
 
 export const OrdersProvider = ({ children }) => {

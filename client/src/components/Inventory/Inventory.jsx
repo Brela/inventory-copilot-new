@@ -1,37 +1,39 @@
-import React, { useEffect, useContext, useState, useRef, useMemo } from 'react';
-import { InventoryContext } from '../../contexts/inventory.context';
-import { updateInventoryItem } from '../../services/inventoryAPIcalls';
-import { OrdersContext } from '../../contexts/orders.context';
-import { createOrderItem } from '../../services/ordersAPIcalls';
-import calculateTotal from '../../utils/calcShippingAndTotal';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useNavigate } from 'react-router-dom';
-import { useDropdown } from '../../hooks/useDropDown';
-import { PinningContext } from '../../contexts/pinning.context';
+import React, { useEffect, useContext, useState, useRef, useMemo } from "react";
+import { InventoryContext } from "../../contexts/inventory.context";
+import { updateInventoryItem } from "../../api/inventoryAPI";
+import { OrdersContext } from "../../contexts/orders.context";
+import { createOrderItem } from "../../api/ordersAPI";
+import calculateTotal from "../../utils/calcShippingAndTotal";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useNavigate } from "react-router-dom";
+import { useDropdown } from "../../hooks/useDropDown";
+import { PinningContext } from "../../contexts/pinning.context";
 
 // import AddProductRow from './popups/AddProductRow';
-import SelectedCheckboxOptionsPopup from './popups/CheckboxOptions';
-import OrderNowPopup from './popups/OrderNow';
-import './inventory.css';
-import './popups/popup.css';
-import {
-  CustomCheckbox,
-  renderHeaderContent,
-} from './CustomCheckbox';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBag, faThumbTack } from '@fortawesome/free-solid-svg-icons';
+import SelectedCheckboxOptionsPopup from "./popups/CheckboxOptions";
+import OrderNowPopup from "./popups/OrderNow";
+import "./inventory.css";
+import "./popups/popup.css";
+import { CustomCheckbox, renderHeaderContent } from "./CustomCheckbox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faShoppingBag, faThumbTack } from "@fortawesome/free-solid-svg-icons";
 library.add(faShoppingBag);
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import AddProductButton from './popups/AddProductButton.jsx';
-import ScaleLoader from 'react-spinners/ScaleLoader';
-import toast, { Toaster } from 'react-hot-toast';
-import { truncateString } from '../../utils/truncateString';
-import Swal from 'sweetalert2';
-import FilterBy from './FilterBy';
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import AddProductButton from "./popups/AddProductButton.jsx";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import toast, { Toaster } from "react-hot-toast";
+import { truncateString } from "../../utils/truncateString";
+import Swal from "sweetalert2";
+import FilterBy from "./FilterBy";
 
-export default function Inventory({ inventoryListScrollRef, ordersListScrollRef, rowHeightState, lastScrolledListRef }) {
+export default function Inventory({
+  inventoryListScrollRef,
+  ordersListScrollRef,
+  rowHeightState,
+  lastScrolledListRef,
+}) {
   const {
     inventory,
     reloadInventory,
@@ -300,7 +302,7 @@ export default function Inventory({ inventoryListScrollRef, ordersListScrollRef,
         (inventoryList.scrollHeight - inventoryList.clientHeight);
       ordersList.scrollTop = Math.round(
         inventoryScrollRatio *
-          (ordersList.scrollHeight - ordersList.clientHeight)
+          (ordersList.scrollHeight - ordersList.clientHeight),
       );
     };
 
@@ -368,7 +370,7 @@ export default function Inventory({ inventoryListScrollRef, ordersListScrollRef,
   const saveNewOrderToLocalStorage = (newInventory) => {
     localStorage.setItem(
       "inventoryOrder",
-      JSON.stringify(newInventory.map((item) => item.id))
+      JSON.stringify(newInventory.map((item) => item.id)),
     );
   };
 
@@ -528,7 +530,7 @@ export default function Inventory({ inventoryListScrollRef, ordersListScrollRef,
                                   event,
                                   item.id,
                                   "reorderAt",
-                                  event.target.value
+                                  event.target.value,
                                 )
                               }
                             />
@@ -545,7 +547,7 @@ export default function Inventory({ inventoryListScrollRef, ordersListScrollRef,
                                   event,
                                   item.id,
                                   "orderQty",
-                                  event.target.value
+                                  event.target.value,
                                 )
                               }
                             />

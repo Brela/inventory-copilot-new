@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './orders.css';
-import { OrdersContext } from '../../contexts/orders.context';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import EditPopup from './EditPopup';
-import Swal from 'sweetalert2';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./orders.css";
+import { OrdersContext } from "../../contexts/orders.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import EditPopup from "./EditPopup";
+import Swal from "sweetalert2";
 
 function ActiveOrders() {
   const navigate = useNavigate();

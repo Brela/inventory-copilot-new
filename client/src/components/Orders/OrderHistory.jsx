@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './orders.css';
-import { OrdersContext } from '../../contexts/orders.context';
-import { clearAllOrderHistory } from '../../services/ordersAPIcalls';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import Swal from 'sweetalert2';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./orders.css";
+import { OrdersContext } from "../../contexts/orders.context";
+import { clearAllOrderHistory } from "../../api/ordersAPI";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 function OrderHistory() {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ function OrderHistory() {
   } */
   const { orders, reloadOrders } = useContext(OrdersContext);
   const orderHistory = orders.filter(
-    (item) => item.orderStatus === "delivered"
+    (item) => item.orderStatus === "delivered",
   );
 
   const handleClearHistory = async () => {

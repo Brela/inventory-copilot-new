@@ -8,8 +8,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import DemoControls from "./components/DemoControls.jsx";
 import { useQuery } from "react-query";
-import { authenticateUser } from "./services/authenticationAPIcalls.js";
-import { useAuth } from "./contexts/auth.context";
+import { authenticateUser } from "./api/authenticationAPI.js";
+import { AuthContext } from "./contexts/AuthContext.jsx";
 import ScaleLoader from "react-spinners/ScaleLoader.js";
 import MoonLoader from "react-spinners/MoonLoader";
 import OrderedDeliveredPopup from "./components/Inventory/popups/OrderedDeliveredPopup.jsx";
@@ -17,24 +17,12 @@ import Sidebar from "react-sidebar";
 import SidebarContent from "./components/Sidebar/SidebarContent";
 
 export default function AppRouterContent() {
-  const { isLoggedIn, logIn, logOut } = useAuth();
+  const { isLoggedIn, authLoading } = useContext(AuthContext);
   const { displayOrderedDeliveredPopup, setDisplayOrderedDeliveredPopup } =
     useContext(OrdersContext);
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const isDemo = params.get("demo") === "true";
-
-  const { data, isError, isLoading } = useQuery(
-    "authenticateUser",
-    authenticateUser,
-    {
-      onSuccess: (data) => {
-        if (data.id) {
-          logIn();
-        }
-      },
-    },
-  );
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
 
@@ -58,7 +46,7 @@ export default function AppRouterContent() {
   return (
     <>
       {displayOrderedDeliveredPopup && <OrderedDeliveredPopup />}
-      {isLoading ? (
+      {authLoading ? (
         <div className="scale-loader-container">
           <MoonLoader color={"orange"} loading={true} size={50} />
         </div>

@@ -1,27 +1,27 @@
-import { createContext, useState, useEffect } from 'react';
-import { getInventoryList } from '../services/inventoryAPIcalls';
-import { getSettings } from '../services/settingsAPIcalls';
-import { updateSetting } from '../services/settingsAPIcalls';
-import { useTempInStock } from '../hooks/useTempStock';
-import { useQuery } from 'react-query';
-import { authenticateUser } from '../services/authenticationAPIcalls';
+import { createContext, useState, useEffect } from "react";
+import { getInventoryList } from "../api/inventoryAPI";
+import { getSettings } from "../api/settingsAPI";
+import { updateSetting } from "../api/settingsAPI";
+import { useTempInStock } from "../hooks/useTempStock";
+import { useQuery } from "react-query";
+import { authenticateUser } from "../api/authenticationAPI";
 
 export const InventoryContext = createContext({
   userData: {},
   userSettings: {},
   inventory: [],
-  reloadInventory: () => { },
-  startUsage: () => { },
-  stopUsage: () => { },
-  resetInventory: () => { },
+  reloadInventory: () => {},
+  startUsage: () => {},
+  stopUsage: () => {},
+  resetInventory: () => {},
   useSelectedOnlyOn: false,
-  setUseSelectedOnlyOn: () => { },
+  setUseSelectedOnlyOn: () => {},
   isUsingStock: false,
   tempInStock: {},
-  setTempInStock: () => { },
+  setTempInStock: () => {},
   selectedItems: [],
-  setSelectedItems: () => { },
-  toggleSelectedItem: () => { },
+  setSelectedItems: () => {},
+  toggleSelectedItem: () => {},
   isLoading: false,
 });
 
@@ -101,7 +101,7 @@ export const InventoryProvider = ({ children }) => {
     setTempInStock,
     useSelectedOnlyOn,
     selectedItems,
-    hasFetchedUserSettings
+    hasFetchedUserSettings,
   );
 
   // -----------------------  toggle selected items ---------------------
@@ -118,18 +118,19 @@ export const InventoryProvider = ({ children }) => {
         // Remove the item from the selected items array
         console.log(
           "1) prevSelectedItemsArray before removing:  ",
-          prevSelectedItemsArray
+          prevSelectedItemsArray,
         );
         prevSelectedItemsArray.splice(itemIndexInSelected, 1);
         console.log(
           "2) prevSelectedItemsArray after removing:  ",
-          prevSelectedItemsArray
+          prevSelectedItemsArray,
         );
       } else {
         // Add the item to the selected items array in the correct order based on the inventory
         const inventoryIndex = getInventoryIndex(itemId);
         const insertIndex = prevSelectedItemsArray.findIndex(
-          (selectedItemId) => inventoryIndex < getInventoryIndex(selectedItemId)
+          (selectedItemId) =>
+            inventoryIndex < getInventoryIndex(selectedItemId),
         );
         if (insertIndex !== -1) {
           prevSelectedItemsArray.splice(insertIndex, 0, itemId);
@@ -139,7 +140,8 @@ export const InventoryProvider = ({ children }) => {
       }
       // Filter out invalid item IDs
       const validSelectedItemsArray = prevSelectedItemsArray.filter(
-        (selectedItemId) => inventory.some((item) => item.id === selectedItemId)
+        (selectedItemId) =>
+          inventory.some((item) => item.id === selectedItemId),
       );
 
       // Update the settings after modifying the selected items array

@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { authenticateUser } from '../../services/authenticationAPIcalls';
-import { useQuery } from 'react-query';
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../api/authenticationAPI";
+import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 function SettingsContent() {
   const navigate = useNavigate();
@@ -33,8 +33,6 @@ function SettingsContent() {
       <h1>Content TBD</h1>
     </div>
   );
-};
-
-
+}
 
 export default SettingsContent;

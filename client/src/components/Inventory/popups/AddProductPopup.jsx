@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
-import './popup.css';
-import './AddProductRow.css';
-import { createInventoryItem } from '../../../services/inventoryAPIcalls';
-import { InventoryContext } from '../../../contexts/inventory.context';
-import Swal from 'sweetalert2';
-import { useQuery } from 'react-query';
-import { authenticateUser } from '../../../services/authenticationAPIcalls';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useContext } from "react";
+import "./popup.css";
+import "./AddProductRow.css";
+import { createInventoryItem } from "../../../api/inventoryAPI";
+import { InventoryContext } from "../../../contexts/inventory.context";
+import Swal from "sweetalert2";
+import { useQuery } from "react-query";
+import { authenticateUser } from "../../../api/authenticationAPI";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const AddProductPopup = ({ onClose }) => {
   const { reloadInventory } = useContext(InventoryContext);
