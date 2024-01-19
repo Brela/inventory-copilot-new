@@ -1,0 +1,168 @@
+.userInfo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* sidebar toggle icon container and icon */
+.sidebar-btn-container {
+    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+}
+
+
+/* logo styles */
+h2 {
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+h2 a {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+h2 a:hover {
+  color: var(--hover-color);
+}
+
+/* side bar toggle icon */
+.sidebarToggleIcon {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #ddd;
+  transition: all 0.3s ease-in-out;
+}
+
+.expand {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 400px) {
+  .sidebarToggleIcon {
+    margin: 0;
+  }
+}
+
+/* ------------------- end sidebar icon / container for icon */
+
+/* container for filter / search components */
+.filter-search-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 0;
+}
+
+/* filter and search container LI */
+.filter-search-container li {
+  display: flex;
+}
+
+
+
+/* style for search and filter by icon */
+.fa-sidebar-icon-fs {
+  font-size: 20px;
+  color: #ffffff;
+  width: 45px;
+}
+
+.fa-sidebar-icon-fs:hover {
+  cursor: pointer;
+}
+
+.fa-sidebar-icon-fs,
+.fa-sidebar-icon-fs+span {
+  margin-top: 20px;
+}
+
+/* -------------------end search and filter container - you can find the search input styling in searchinput.css */
+
+/* .nav-links is the container for the nav links  */
+.nav-links {
+
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* margin-top: 15px; */
+}
+
+/* the styling for each link */
+.nav-links a {
+  color: #eeeeee;
+  text-decoration: none;
+  transition: background-color 0.25s;
+}
+
+/* style for the li holding the link */
+.nav-links li {
+  height: 48px;
+  border-bottom: 1px solid #222;
+  transition: background-color 0.4s;
+}
+
+/* hover style for each li holding the links */
+.nav-links li:hover {
+  color: #ffffff;
+  background-color: #333;
+}
+
+.nav-links li:active {
+  background-color: #333;
+}
+
+.active {
+  background-color: #555;
+}
+
+/* styling for each icon - nav links - does not include the sidebar toggle icon or filter and search */
+.fa-sidebar-icon {
+  font-size: 20px;
+  color: #888;
+  margin-top: 10px;
+  padding-right: 5px;
+  width: 45px;
+}
+
+.fa-sidebar-icon:hover {
+  cursor: pointer;
+}
+
+/* footer container */
+
+.footer-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding: 2px;
+  gap: 0.5rem 0;
+}
+
+/* footer span */
+
+.footer-span {
+  display: flex;
+  gap: 5px;
+  font-size: 7pt;
+}
+
+.user-info {
+  color: #eee;
+  flex-direction: column;
+  text-align: center;
+  padding: 0.5rem 0;
+  list-style: none;
+  background-color: #333;
+  width: 90%;
+  font-size: 10pt;
+  border: 1px solid #555;
+}

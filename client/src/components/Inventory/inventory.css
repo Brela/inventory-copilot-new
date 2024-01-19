@@ -1,0 +1,299 @@
+/* Inventory ------------------------------------ */
+
+/* inventory header title */
+.tr-inventory-title {
+  background-color: transparent;
+  border: none;
+}
+
+.tr-inventory-title:hover {
+  background-color: transparent;
+}
+
+h1 {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+/* ------------------------- */
+
+/* header tds */
+.tr-header {
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: rgba(226, 239, 240, 1);
+  height: 30px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tr-header:hover {
+  background-color: rgba(226, 239, 240, 1);
+}
+
+/* ------------------------- */
+
+/* TDs */
+.inventory-tbody td:first-child {
+  flex: .5;
+}
+
+.inventory-tbody td:nth-child(2),
+.inventory-tbody td:nth-child(3),
+.inventory-tbody td:nth-child(4) {
+  justify-content: flex-start;
+}
+
+.inventory-tbody td:nth-child(6),
+.inventory-tbody td:nth-child(7),
+.inventory-tbody td:nth-child(8),
+.inventory-tbody td:nth-child(9),
+.inventory-tbody td:nth-child(10) {
+  justify-content: center;
+}
+
+.inventory-tbody td:nth-child(9),
+.inventory-tbody td:nth-child(10) {
+  flex: .6;
+  align-items: center;
+}
+
+.inventory-tbody td:nth-child(6) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+/* ------------------------- */
+
+.dynamic-inputs {
+  width: 2rem;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  color: black;
+  border-radius: 4px;
+  border: 1px solid #ececec;
+}
+
+.pin-icon,
+.order-now-icon {
+  font-size: 20px;
+  opacity: 30%;
+}
+
+.inventory-tbody td button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgba(198, 198, 198, 0);
+}
+
+.inventory-tbody td button:hover {
+  background-color: rgba(198, 198, 198, 0.2);
+}
+
+/* add product icon */
+.icon-add-prod {
+  color: var(--accent-color);
+  background: transparent;
+  font-size: 24px;
+  border: none;
+  z-index: 999;
+}
+
+#add-prod-td {
+  position: relative;
+  flex: 0;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: -1vw;
+}
+
+/* ----------------- */
+
+/* drag and drop cursor */
+
+#inventory table thead td:hover {
+  cursor: default;
+}
+
+#inventory table td:hover {
+  cursor: grab;
+}
+
+#inventory table td:active {
+  cursor: grabbing;
+}
+
+/* ---------- */
+
+/* span titles for small screens */
+.mobile-span {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #888;
+  padding: 2px 0;
+}
+
+.mobile-span-name {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #555;
+  width: 200px;
+}
+
+.mobile-span-check {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #555;
+}
+
+.inventory-tbody td {
+  position: relative;
+}
+
+.tr-inventory-title tr {
+  position: relative;
+}
+
+
+/* queries for mobile devices */
+@media (max-width: 675px) {
+
+  .hide-on-small, .tr-header {
+    display: none;
+  }
+
+  .inventory-orders-container {
+    padding: .25rem .5rem;
+  }
+
+  .inventory-tbody td {
+    padding: .5rem;
+    height: 75px;
+  }
+
+  .inventory-tbody tr {
+    height: 75px;
+  }
+
+  .order-now-icon {
+    font-size: 16px;
+  }
+
+  .mobile-span {
+    display: block !important;
+  }
+
+  .mobile-span-name {
+    display: block !important;
+  }
+
+  .mobile-span-check {
+    display: block !important;
+  }
+
+  .MuiCheckbox-root {
+    width: 1rem;
+  }
+
+}
+
+
+
+/* pinned item effect */
+tr.pinned-item {
+  transition: all 0.3s ease-in-out;
+}
+
+tr.pinned-item:first-child {
+  background-color: #c4c4c4;
+}
+
+
+
+
+/* check box & highlight, scale loader */
+
+.scale-loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* to ensure it's on top */
+}
+
+.checkbox-options-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  border: 2px solid #4c4a4a;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.fa-icon.check-icon {
+  padding: 1px 2px;
+  font-size: 1em;
+}
+
+.custom-checkbox.checked {
+  background-color: #000;
+}
+
+.highlight-selected-even {
+  border: 1.5px solid var(--dark-grey);
+  background-color: rgba(201, 225, 225, 0.585);
+}
+
+.highlight-selected-odd {
+  border: 1.5px solid var(--dark-grey);
+  background-color: rgba(233, 233, 228, 0.585);
+}
+
+
+
+
+/* style for filter by dropdown */
+#filterBy {
+  background-color: rgba(238, 238, 238, .5);
+  border: 1px solid var(--logo-color);
+  color: #444;
+  height: 28px;
+  border-radius: 5px;
+  width: max-content;
+}
+
+#filterBy:active,
+#filterBy:focus {
+  outline: 1px solid #999;
+}

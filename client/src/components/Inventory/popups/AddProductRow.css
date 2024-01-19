@@ -1,0 +1,87 @@
+
+.popup-container {
+  position: fixed;
+  inset:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: none;
+}
+
+.popup-content {
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+label {
+  color:#ccc;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.save-btn,
+.close-btn {
+  font-size: 12pt;
+}
+
+.save-btn {
+  color:var(--accent-color);
+}
+
+.save-btn:hover {
+  color:var(--logo-color);
+  text-decoration: underline;
+}
+
+.close-btn {
+  color:#bbb;
+}
+
+.close-btn:hover {
+  color:#ddd;
+  text-decoration: underline;
+}
+
+
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap:.5rem;
+}
+
+
+.product input{
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #444;
+  color:#eee;
+}
+
+.product input:focus {
+  outline-color: var(--logo-color);
+}
+
+.popup-title {
+  display: flex;
+  border:none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  justify-content: flex-end;
+  color:var(--accent-color);
+}
+

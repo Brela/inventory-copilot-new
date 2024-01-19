@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default CSS from VITE install */
+/* keep this, adds the color scheme across the layout */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  --dark-grey: #434343;
+  --grey: #555;
+  --light-grey: #9e9e9e;
+  --logo-color: #33b5af;
+  --accent-color: #2ca39d;
+  --hover-color: #8fd4d1;
+  --main-background: rgb(225, 226, 226);
+  --orders-background: rgb(177, 190, 191);
+
+  background-color: var(--main-background);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='950' preserveAspectRatio='none' viewBox='0 0 1440 950'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1617%26quot%3b)' fill='none'%3e%3crect width='1440' height='950' x='0' y='0' fill='rgba(221%2c 221%2c 221%2c 1)'%3e%3c/rect%3e%3cpath d='M1440 0L1178.26 0L1440 164.76z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1178.26 0L1440 164.76L1440 587.78L931.43 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M931.43 0L1440 587.78L1440 660.14L704.0699999999999 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M704.0699999999999 0L1440 660.14L1440 834.21L218.97999999999996 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 950L312.49 950L0 647.9200000000001z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 647.9200000000001L312.49 950L627.97 950L0 496.9000000000001z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 496.9L627.97 950L667.73 950L0 289.67999999999995z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 289.67999999999995L667.73 950L1130.5 950L0 118.66999999999996z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1617'%3e%3crect width='1440' height='950' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  background-position: center top;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid rgb(186, 186, 186);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #dfdfdf;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #242424;
+  min-width: 44px;
+  width: auto;
+  height: 35px;
+  text-align: center;
+  font-weight: bold;
+}
+
+button:hover {
+  border-color: #444;
+}
+
+/* End default css */
+
+* {
+  box-sizing: border-box;
+}
+
+.fa-icon {
+  font-size: 17px;
+  color: #474d53;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+tr {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  color: #242424;
+  height: 65px;
+  margin: 3px 0;
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+thead tr {
+  background-color: rgba(226, 239, 240, 0.5);
+  display: flex;
+  align-items: center;
+  height: 30px;
+  position: relative;
+}
+
+thead tr:hover {
+  background-color: rgba(226, 239, 240, 0.5);
+}
+
+td {
+  min-height: 65px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  line-height: 15px;
+}
+
+.small-blue-button {
+  text-decoration: none;
+  margin-left: 125px;
+  font-size: 12px;
+  color: var(--logo-color);
+}
+
+.small-blue-button:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
+}
+
+.swal2-icon.swal2-error {
+  border-color: #3b9893 !important;
+}
+
+.swal2-x-mark-line-left {
+  background-color: #3b9893 !important;
+}
+
+.swal2-x-mark-line-right {
+  background-color: #3b9893 !important;
+}
+
+.swal2-styled {
+  height: 2.5em;
+  width: 6.5em;
+}
+
+.swal2-confirm {
+  background-color: #3b9893 !important;
+}
+
+.swal2-cancel {
+  background-color: #3b9893 !important;
+  text-align: center;
+}
+
+.swal2-success-line-tip {
+  background-color: #3b9893 !important;
+}
+
+.swal2-success-line-long {
+  background-color: #3b9893 !important;
+}
+
+.swal2-success-ring {
+  border-color: #3b9893 !important;
+}
+
+.swal2-icon-content {
+  color: #3b9893 !important;
+}
+
+.swal2-info {
+  border-color: #3b9893 !important;
+}

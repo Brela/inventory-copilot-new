@@ -1,0 +1,107 @@
+/* CSS for .dropdown-icon */
+li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.google-hyperlink {
+  color: #3b9893;
+}
+
+.csv-instructions {
+  width: 80vw !important;
+}
+
+@media only screen and (min-width: 1025px) {
+  .csv-instructions {
+    width: 70vw !important;
+    max-width: 800px;
+  }
+}
+
+.csv-container {
+  text-align: left;
+}
+
+.dropdown-icon {
+  position: relative;
+}
+
+.dropdown-icon button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+
+.fa-dropdown {
+  padding-right: 5px;
+  color: var(--logo-color);
+  font-size: 18pt;
+}
+
+.addprodicon {
+  font-size: 28px;
+  color:var(--accent-color);
+}
+
+.addprodicon:hover {
+  color:var(--logo-color);
+  border-bottom-right-radius: 0px;
+}
+
+.addprodicon:active,
+.addprodicon:focus {
+  outline: none;
+  color:var(--logo-color);
+}
+
+.dropdown-icon button.addprodicon {
+  position: relative;
+  z-index: 10001; /* higher value than dropdown-menu */
+}
+
+/* CSS for .dropdown-menu */
+
+.dropdown-menu {
+  position: absolute;
+  top: 14%;
+  right: 23%;
+  display: block;
+  background-color: #eee;
+  min-width: 140px;
+  z-index: 10000;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding-top: 10px;
+}
+
+
+.dropdown-items li {
+  list-style: none;
+  font-size: 11pt;
+}
+
+.dropdown-items {
+  /* margin: 0; */
+  padding: 0 10px;
+  margin: 10px 0;
+}
+
+.dropdown-items button {
+  height:15px;
+}
+
+.dropdown-items button:hover {
+  color:#444;
+  text-decoration: underline;
+}
+
+#add-prod-td {
+  flex: 0;
+  min-width: 50px;
+  margin-right: 2px;
+}
+
+

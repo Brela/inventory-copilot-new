@@ -1,0 +1,191 @@
+#username {
+  color: #3b9893;
+}
+
+#password {
+  color: #3b9893;
+}
+
+#companyId {
+  color: #3b9893;
+}
+
+#companyName {
+  color: #3b9893;
+}
+
+.loginWindow-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fefefec8;
+  min-height: 500px;
+  width: 500px;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.6);
+  padding: 5% 0 10% 0;
+}
+
+.input-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.companyID-prompt {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.companyID-prompt:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.3rem;
+}
+
+.go-back-button {
+  background-color: #3b9893 !important;
+}
+
+.circle-spinner {
+  margin: auto;
+}
+
+.login-button {
+  background-color: #3b9893 !important;
+}
+
+.new-account-container {
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-between;
+  margin-top: 13px;
+}
+
+.add-company-link {
+  margin: 0;
+}
+
+.add-company-link:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.new-account-link {
+  margin: 0;
+}
+
+.new-account-link:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #3b9893 !important;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 70%;
+  width: 80%;
+  padding: 0;
+  color: #3b9893;
+}
+
+.title-container {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  height: 30%;
+  width: 100%;
+}
+
+.title {
+    font-weight: 900;
+  color: #8e9494;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.sub-title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+  color: rgb(95, 90, 90);
+  font-size: 20px;
+  font-weight:700;
+  text-align: center;
+  border-bottom: 2px;
+}
+
+.input-header {
+  margin: 0;
+  color: rgb(80, 80, 80);
+  font-size: 20px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .loginWindow-container {
+    width: 300px;
+    height: auto;
+    padding: 0;
+    padding-bottom: 5px;
+  }
+
+  .input-container {
+    margin: 10px auto;
+  }
+
+  .title-container {
+    margin-bottom: 0;
+  }
+
+  .login-button {
+    padding: 0;
+    margin: 0;
+  }
+
+  .new-account-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    justify-content: space-between;
+    margin-top: 13px;
+  }
+
+  .add-company-link {
+    margin-bottom: 10px;
+  }
+
+  #username, #password {
+    height: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .title {
+    font-size: 3em;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  #guest-submit-button {
+    margin-top: 0 !important;
+    padding: 0 !important;
+  }
+}

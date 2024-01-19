@@ -1,0 +1,198 @@
+.popup {
+  width: 80vw;
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  background-color: #444;
+  padding: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 4999;
+  border-radius: 5px;
+  max-width: fit-content;
+}
+
+.container-both-columns {
+  display: flex;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.left-container {
+  color: #eee;
+  background-color: #555;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: .5rem 0;
+}
+
+.right-container {
+  color: #eee;
+  background-color: #666;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: .5rem 0;
+}
+
+.popup-cell {
+  padding: .15rem 1rem;
+  font-size: 10pt;
+}
+
+.left-container :nth-child(8),
+.right-container :nth-child(8) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.popup-input {
+  color: #eee;
+  width: 2rem;
+  border-radius: 5px;
+  border: 1px solid #777;
+  background-color: #444;
+  text-align: center;
+}
+
+.popup-button {
+  width: 100%;
+  background-color: var(--logo-color);
+  color: #444;
+  border: none;
+  padding: 0 .5rem;
+  border-radius: 3px;
+}
+
+.popup-button:hover {
+  background-color: var(--accent-color);
+}
+
+#edit-pop-button {
+  width: 100%;
+  background-color: var(--logo-color);
+  color: #444;
+  border: none;
+  padding: 0 .5rem;
+  border-radius: 3px;
+}
+
+#edit-pop-button:hover {
+  background-color: var(--accent-color);
+}
+
+.close-edit-btn {
+  color:#bbb;
+  background-color: transparent;
+  border:none;
+}
+
+.close-edit-btn:hover {
+  color:#ddd;
+  text-decoration: underline;
+}
+
+/* icon container */
+.close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.fa-close-icon {
+  color: #bbb;
+  font-size: 16pt;
+}
+
+.fa-close-icon:hover {
+  color: #999;
+}
+
+#close {
+  background-color: transparent;
+  border: none;
+}
+
+.hide {
+  display: none;
+}
+
+
+/* ------ checkbox options popup --------------- */
+.checkbox-options-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  height: auto;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  max-width: 500px;
+}
+
+.checkbox-options-popup h2 {
+  border-bottom: 1px solid var(--grey);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.checkbox-options-popup .options-section {
+  margin: 0 10% 0 5%;
+}
+
+.checkbox-options-popup .rows {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-options-popup #close {
+  border: 1px solid grey;
+  width: 50%;
+}
+
+.checkbox-options-popup section.confirmation {
+  height: auto;
+}
+
+.listOfSelectedContainer {
+  height: 150px;
+  border: 1px solid grey;
+  overflow-y: scroll;
+}
+
+.listOfSelectedContainer ul {
+  padding: 0 3%;
+}
+
+.listOfSelectedContainer li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.listOfSelectedContainer li>div {
+  width: 30%;
+}
+
+.listOfSelectedContainer li>div.list-numbering,
+.listOfSelectedContainer li>div.list-spacer {
+  width: 5%;
+  margin-right: 4%;
+}
+
+.checkbox-options-popup .activate-confirmation-box {
+  background-color: rgb(255, 255, 255);
+  padding: 0 20px;
+  margin: 0;
+}
+
+
+/* order now pop up */
+
+.swal2-container-custom {
+  z-index: 2000; 
+}
