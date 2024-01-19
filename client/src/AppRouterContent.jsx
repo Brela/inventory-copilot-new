@@ -31,7 +31,7 @@ export default function AppRouterContent() {
   };
 
   const sidebarStyles = {
-    background: "var(--dark-grey)",
+    // background: "#787c82",
     position: "fixed",
     width: sidebarCollapsed ? "45px" : "185px",
     transition: "width .3s ease-in-out",

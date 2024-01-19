@@ -99,28 +99,50 @@ const SidebarContent = ({ onToggle, collapsed }) => {
   return (
     <div className="relative flex flex-col min-h-screen overflow-hidden">
       <div className="sidebar-btn-container">
-        {!collapsed && (
+        {/*        {!collapsed && (
           <h2>
             <a href="/">Orderly</a>
           </h2>
-        )}
-        <button className="sidebarToggleIcon" onClick={onToggle}>
+        )} */}
+        <button className="sidebarToggleIcon text-white" onClick={onToggle}>
           <FontAwesomeIcon
             icon={collapsed ? faBars : faTimes}
-            className={`sidebarToggleIcon ${collapsed ? "" : "expand"}`}
+            className={`sidebarToggleIcon text-white ${
+              collapsed ? "" : "expand"
+            }`}
           />
         </button>
       </div>
-      <ul className="nav-links">
-        <NavLink to="/" activeclassname="active">
-          <li>
-            <FontAwesomeIcon className="fa-sidebar-icon" icon={faFile} />
+      <ul className="nav-links text-white">
+        <NavLink
+          to="/"
+          style={({ isActive }) => ({
+            color: isActive ? "#fff" : "#545e6f",
+            background: isActive ? "#787c82" : "",
+          })}
+          className="hover:bg-gray-200"
+        >
+          <li className="text-gray-700">
+            <FontAwesomeIcon
+              className="fa-sidebar-icon text-white"
+              icon={faFile}
+            />
             {!collapsed && <span>Inventory</span>}
           </li>
         </NavLink>
-        <NavLink to="/Orders" activeclassname="active">
+        <NavLink
+          to="/Orders"
+          style={({ isActive }) => ({
+            color: isActive ? "#fff" : "#545e6f",
+            background: isActive ? "#787c82" : "",
+          })}
+          className="hover:bg-gray-200"
+        >
           <li>
-            <FontAwesomeIcon className="fa-sidebar-icon" icon={faShoppingBag} />
+            <FontAwesomeIcon
+              className="fa-sidebar-icon text-white"
+              icon={faShoppingBag}
+            />
             {!collapsed && <span>Orders</span>}
           </li>
         </NavLink>
@@ -140,11 +162,14 @@ const SidebarContent = ({ onToggle, collapsed }) => {
             }
           }}
         >
-          <FontAwesomeIcon className="fa-sidebar-icon" icon={faUser} />
+          <FontAwesomeIcon
+            className="fa-sidebar-icon text-white"
+            icon={faUser}
+          />
           {!collapsed && <span>Profile</span>}
         </li>
         {profilePopup && !collapsed && (
-          <div className=" min-h-[100px] p-3 bg-gray-500 z-40 text-white text-sm flex flex-col gap-5 items-center">
+          <div className=" min-h-[100px] p-3 z-40 text-white bg-zinc-400/50 text-sm flex flex-col gap-5 items-center">
             <p className="flex flex-wrap items-center">
               Username:
               <span className="text-lg pl-3">{username}</span>
@@ -195,14 +220,14 @@ const SidebarContent = ({ onToggle, collapsed }) => {
                   rel="license"
                   href="http://creativecommons.org/licenses/by-nc/4.0/"
                 >
-                  <img
+                  {/*       <img
                     alt="Creative Commons License"
                     style={{ borderWidth: 0 }}
                     src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png"
-                  />
+                  /> */}
                 </a>
               </span>
-              <span>Orderly 2023</span>
+              <span>Inventory Copilot 2023</span>
             </div>
           </>
         )}
